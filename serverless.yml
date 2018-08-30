@@ -1,11 +1,12 @@
+app: api
+tenant: brunowildhagen
 service: serverless-challenge
 
 frameworkVersion: ">=1.1.0 <2.0.0"
 
 provider:
   name: aws
-  runtime: nodejs4.3 #nodejs6.10, python2.7, python3.6
-  profile: hackathon
+  runtime: nodejs6.10
   region: us-east-1
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
@@ -28,7 +29,7 @@ functions:
     timeout: 30
     events:
       - s3:
-          bucket: bucketname # Escolha o nome do seu bucket que deve ser único
+          bucket: instagrao-imagens
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads/

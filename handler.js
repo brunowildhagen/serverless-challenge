@@ -8,4 +8,11 @@ module.exports.extractMetadata = (event, context, callback) => {
 };
 
 module.exports.getMetadata = (event, context, callback) => {
+	return {
+		"statusCode": 200,
+		"headers": {
+			"Content-Type": "application/json"
+		},
+		"body": JSON.stringify({"message":"getMetadata up!"})
+	}
 };
